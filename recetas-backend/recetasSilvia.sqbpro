@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?><sqlb_project><db path="recetasSilvia.db" readonly="0" foreign_keys="1" case_sensitive_like="0" temp_store="0" wal_autocheckpoint="1000" synchronous="2"/><attached/><window><main_tabs open="structure browser pragmas query" current="0"/></window><tab_structure><column_width id="0" width="300"/><column_width id="1" width="0"/><column_width id="2" width="100"/><column_width id="3" width="2222"/><column_width id="4" width="0"/><expanded_item id="0" parent="1"/><expanded_item id="1" parent="1"/><expanded_item id="2" parent="1"/><expanded_item id="3" parent="1"/></tab_structure><tab_browse><table title="dificultades" custom_title="0" dock_id="1" table="4,12:maindificultades"/><dock_state state="000000ff00000000fd00000001000000020000058100000390fc0100000001fb000000160064006f0063006b00420072006f00770073006500310100000000000005810000011e00ffffff000002690000000000000004000000040000000800000008fc00000000"/><default_encoding codec=""/><browse_table_settings><table schema="main" name="dificultades" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_" freeze_columns="0"><sort/><column_widths><column index="1" value="35"/><column index="2" value="63"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table></browse_table_settings></tab_browse><tab_sql><sql name="SQL 1*">CREATE TABLE IF NOT EXISTS usuarios (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    username TEXT UNIQUE NOT NULL,
+    password TEXT NOT NULL,
+    nombre TEXT NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS dificultades (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    dificultad TEXT NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS recetas (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    nombre TEXT NOT NULL,
+    ingredientes TEXT,
+    descripcion TEXT,
+    tiempo_preparacion INTEGER,
+    FK_dificultad INTEGER,
+    FK_usuario INTEGER,
+    fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (FK_dificultad) REFERENCES dificultades(id),
+    FOREIGN KEY (FK_usuario) REFERENCES usuarios(id)
+);
+
+INSERT INTO dificultades (dificultad) VALUES ('Fácil'), ('Normal'), ('Difícil');
+
+-- Insertar usuario de prueba (password: admin123)
+INSERT INTO usuarios (username, password, nombre) VALUES 
+('SilviaAdmin20', '$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy', 'Silvia González'),
+('Mary24', '$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy', 'María García'),
+('Leti2025', '$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy', 'Leticia Fernández');
+
+INSERT INTO recetas (nombre, ingredientes, descripcion, tiempo_preparacion, FK_dificultad, FK_usuario) VALUES 
+('Tortilla de patatas', 'Huevos, patatas, aceite, sal', 'Pelar y cortar las patatas. Freír en abundante aceite. Batir los huevos y mezclar con las patatas. Cuajar en la sartén.', 30, 1, 2),
+('Salmorejo Cordobés', 'Tomates, ajo, pan, vinagre, aceite de oliva, jamón serrano en tacos, huevo', 'Lavar los ingredientes y remojar el pan. Triturar todo en un procesador de alimentos. Acompañar con taquitos de jamón serrano y huevo cocido.', 30, 1, 3),
+('Fabada Asturiana', 'Fabón asturiano, compango asturiano, pimentón de La Vera, aceite de oliva', 'Sofreír el compango con el pimentón en un poco de aceite de oliva. Añadir el fabón -previamente en remojo desde el día anterior-, rehogar y cubrir con agua. Cocinar hasta que el fabón esté tierno.', 120, 2, 1),
+('Arroz con leche meloso asturiano', 'Arroz especial postres, 1L de leche entera, cáscara de naranja, cáscara de limón, canela en rama, azúcar moreno', 'Poner en una olla todos los ingredientes excepto el azúcar. Cocinar a fuego suave durante 40 minutos sin que llegue a hervir, removiendo constantemente. Añadir el azúcar y cocinar 5 minutos más. Emplatar y caramelizar por arriba con azúcar moreno con ayuda de un soplete de cocina.', 60, 3, 1);</sql><current_tab id="0"/></tab_sql></sqlb_project>

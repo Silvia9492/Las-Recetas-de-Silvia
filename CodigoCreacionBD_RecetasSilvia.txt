@@ -1,0 +1,44 @@
+-- Código de creación de la base de datos RecetasSilvia:
+
+CREATE TABLE IF NOT EXISTS usuarios (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    username TEXT UNIQUE NOT NULL,
+    password TEXT NOT NULL,
+    nombre TEXT NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS dificultades (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    dificultad TEXT NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS recetas (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    nombre TEXT NOT NULL,
+    ingredientes TEXT,
+    descripcion TEXT,
+    tiempo_preparacion INTEGER,
+    FK_dificultad INTEGER,
+    FK_usuario INTEGER,
+    fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (FK_dificultad) REFERENCES dificultades(id),
+    FOREIGN KEY (FK_usuario) REFERENCES usuarios(id)
+);
+
+INSERT INTO dificultades (dificultad) VALUES ('Fácil'), ('Normal'), ('Difícil');
+
+-- Contraseñas reales para poder probar la app:
+	SilviaAdmin20 => Silvia2025*
+	Mary24 => Maria2025*
+	Leti2025 => Leticia2025*
+
+INSERT INTO usuarios (username, password, nombre) VALUES 
+('SilviaAdmin20', '$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy', 'Silvia González'),
+('Mary24', '$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy', 'María García'),
+('Leti2025', '$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy', 'Leticia Fernández');
+
+INSERT INTO recetas (nombre, ingredientes, descripcion, tiempo_preparacion, FK_dificultad, FK_usuario) VALUES 
+('Tortilla de patatas', 'Huevos, patatas, aceite, sal', 'Pelar y cortar las patatas. Freír en abundante aceite. Batir los huevos y mezclar con las patatas. Cuajar en la sartén.', 30, 1, 2),
+('Salmorejo Cordobés', 'Tomates, ajo, pan, vinagre, aceite de oliva, jamón serrano en tacos, huevo', 'Lavar los ingredientes y remojar el pan. Triturar todo en un procesador de alimentos. Acompañar con taquitos de jamón serrano y huevo cocido.', 30, 1, 3),
+('Fabada Asturiana', 'Fabón asturiano, compango asturiano, pimentón de La Vera, aceite de oliva', 'Sofreír el compango con el pimentón en un poco de aceite de oliva. Añadir el fabón -previamente en remojo desde el día anterior-, rehogar y cubrir con agua. Cocinar hasta que el fabón esté tierno.', 120, 2, 1);
+('Arroz con leche meloso asturiano', 'Arroz especial postres, 1L de leche entera, cáscara de naranja, cáscara de limón, canela en rama, azúcar moreno', 'Poner en una olla todos los ingredientes excepto el azúcar. Cocinar a fuego suave durante 40 minutos sin que llegue a hervir, removiendo constantemente. Añadir el azúcar y cocinar 5 minutos más. Emplatar y caramelizar por arriba con azúcar moreno con ayuda de un soplete de cocina.', 60, 3, 1);
