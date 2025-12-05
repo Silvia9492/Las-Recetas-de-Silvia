@@ -1,0 +1,52 @@
+<h2 mat-dialog-title class="modal-title">Nueva Receta</h2>
+
+<div mat-dialog-content class="modal-content">
+
+  <form #form="ngForm" (ngSubmit)="crearReceta(form)">
+
+    <mat-form-field appearance="outline">
+      <mat-label>Nombre</mat-label>
+      <input matInput required [(ngModel)]="receta.nombre" name="nombre">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Ingredientes</mat-label>
+      <textarea rows="4" matInput required [(ngModel)]="receta.ingredientes" name="ingredientes"></textarea>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Descripción</mat-label>
+      <textarea rows="4" matInput required [(ngModel)]="receta.descripcion" name="descripcion"></textarea>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Tiempo de preparación (minutos)</mat-label>
+      <input matInput required type="number" min="1" [(ngModel)]="receta.tiempoPreparacion" name="tiempo">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Dificultad</mat-label>
+      <mat-select required [(ngModel)]="receta.dificultadId" name="dificultad">
+        <mat-option *ngFor="let d of dificultades" [value]="d.id">
+          {{ d.dificultad }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <p *ngIf="errorMessage" class="error">{{ errorMessage }}</p>
+
+    <div class="actions">
+      <button mat-flat-button color="primary" [disabled]="isLoading">
+        Crear
+      </button>
+
+      <button mat-stroked-button type="button" (click)="cancelar()" [disabled]="isLoading">
+        Cancelar
+      </button>
+    </div>
+
+    <div class="spinner" *ngIf="isLoading">
+      <mat-progress-spinner mode="indeterminate" diameter="40"></mat-progress-spinner>
+    </div>
+  </form>
+</div>

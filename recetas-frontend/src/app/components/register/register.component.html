@@ -1,0 +1,78 @@
+<div class="login-container">
+  <div class="container">
+    <div class="row justify-content-center align-items-center min-vh-100">
+      <div class="col-md-5 col-lg-4">
+        <div class="card shadow-lg fade-in">
+          <div class="card-body p-5">
+            <div class="text-center mb-4">
+              <i class="fas fa-utensils fa-3x" style="color: var(--primary-color)"></i>
+              <h2 class="fw-bold" style="color: var(--primary-color)">Las Recetas de Silvia</h2>
+              <p class="text-muted">¡Crea tu cuenta!</p>
+            </div>
+            <div *ngIf="errorMessage" class="alert alert-danger alert-dismissible fade show" role="alert">
+              {{ errorMessage }}
+              <button type="button" class="btn-close" (click)="errorMessage = ''" aria-label="Close"></button>
+            </div>
+
+            <div *ngIf="successMessage" class="alert alert-success alert-dismissible fade show" role="alert">
+              {{ successMessage }}
+              <button type="button" class="btn-close" (click)="successMessage = ''" aria-label="Close"></button>
+            </div>
+
+            <form (ngSubmit)="onSubmit(registerForm)" #registerForm="ngForm" class="register-form">
+              
+              <mat-form-field appearance="outline" class="w-100 mb-3 coral-field">
+                <mat-label>Nombre</mat-label>
+                <input matInput [(ngModel)]="userData.nombre" name="nombre" required placeholder="Nombre">
+                <mat-icon matSuffix><i class="fas fa-user-circle"></i></mat-icon>
+              </mat-form-field>
+
+              <mat-form-field appearance="outline" class="w-100 mb-3 coral-field">
+                <mat-label>Nombre de usuario</mat-label>
+                <input matInput [(ngModel)]="userData.username" name="username" required placeholder="Nombre de usuario">
+                <mat-icon matSuffix><i class="fas fa-user"></i></mat-icon>
+              </mat-form-field>
+
+              <mat-form-field appearance="outline" class="w-100 mb-3 coral-field">
+                <mat-label>Contraseña</mat-label>
+                <input matInput [(ngModel)]="userData.password" name="password" type="password" required placeholder="Contraseña">
+                <mat-icon matSuffix><i class="fas fa-lock"></i></mat-icon>
+              </mat-form-field>
+
+              <mat-form-field appearance="outline" class="w-100 mb-4 coral-field">
+                <mat-label>Confirma tu contraseña</mat-label>
+                <input matInput [(ngModel)]="confirmPassword" name="confirmPassword" type="password" required placeholder="Repetir contraseña">
+                <mat-icon matSuffix><i class="fas fa-lock"></i></mat-icon>
+              </mat-form-field>
+
+              <div class="d-grid mb-3 text-center">
+                <button mat-flat-button color="primary" type="submit" [disabled]="isLoading || !registerForm.valid" class="w-100 py-3">
+                  <ng-container *ngIf="!isLoading">
+                    <i class="fas fa-user-plus me-2"></i>¡Regístrame!
+                  </ng-container>
+                  <ng-container *ngIf="isLoading">
+                    <mat-progress-spinner
+                      diameter="24"
+                      mode="indeterminate"
+                      color="accent"
+                      class="me-2"
+                    ></mat-progress-spinner>
+                    Registrando...
+                  </ng-container>
+                </button>
+              </div>
+
+              <div class="text-center mt-2">
+                <p class="mb-0">
+                  ¿Ya tienes cuenta?
+                  <a routerLink="/home" class="text-decoration-none fw-bold registerLink">¡Inicia sesión!</a>
+                </p>
+              </div>
+            </form>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

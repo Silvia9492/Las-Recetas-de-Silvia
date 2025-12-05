@@ -1,0 +1,40 @@
+<app-navbar 
+  [username]="currentUser?.username ?? null"
+  [recetas]="recetas"
+  (nuevaReceta)="agregarReceta($event)"
+  (recetaActualizada)="actualizarReceta($event)"
+  (recetaEliminada)="eliminarRecetaPorId($event)">
+</app-navbar>
+
+<div class="home-container" *ngIf="!isLoading; else loading">
+  <div class="cards-container">
+    <mat-card class="receta-card" *ngFor="let receta of recetas">
+      <mat-card-header>
+        <mat-card-title>{{ receta.nombre }}</mat-card-title>
+        <mat-card-subtitle>Dificultad: {{ receta.dificultad }}</mat-card-subtitle>
+      </mat-card-header>
+      
+      <mat-card-content>
+        <p><strong>Ingredientes:</strong> {{ receta.ingredientes }}</p>
+        <p><strong>Descripción:</strong> {{ receta.descripcion }}</p>
+        <p><strong>Tiempo de preparación:</strong> {{ receta.tiempoPreparacion }} min</p>
+      </mat-card-content>
+
+      <!-- Sólo el usuario SilviaAdmin20 puede editar las recetas y eliminarlas; al resto de usuarios NO se le muestran esos controles -->
+      <div class="card-actions" *ngIf="currentUser?.username === 'SilviaAdmin20'">
+        <button mat-icon-button color="primary" matTooltip="Editar receta" (click)="editarReceta(receta)">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button color="warn" matTooltip="Eliminar receta" (click)="eliminarReceta(receta)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
+    </mat-card>
+  </div>
+</div>
+
+<ng-template #loading>
+  <div class="loading-container">
+    <mat-spinner color="primary"></mat-spinner>
+  </div>
+</ng-template>

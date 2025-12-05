@@ -1,0 +1,60 @@
+.modal-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 2rem;
+  max-width: 100%;
+  background-color: #fff;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.modal-title {
+  margin: 0;
+  padding-bottom: 1rem;
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: var(--primary-color);
+  text-align: center;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+mat-form-field.mat-form-field-appearance-outline .mat-form-field-outline {
+  color: var(--primary-color);
+}
+
+mat-form-field.mat-form-field-appearance-outline.mat-focused .mat-form-field-outline {
+  border-color: var(--primary-color);
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.actions button {
+  min-width: 120px;
+}
+
+mat-progress-spinner {
+  display: block;
+  margin: 1.5rem auto;
+}
+
+.error {
+  color: #d32f2f;
+  text-align: center;
+  font-size: 0.95rem;
+  margin-top: 0.5rem;
+}

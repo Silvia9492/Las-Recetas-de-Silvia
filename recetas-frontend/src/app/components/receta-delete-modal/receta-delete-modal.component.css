@@ -1,0 +1,63 @@
+:host {
+  display: block;
+  padding: 1.5rem;
+  max-width: 100%;
+  background-color: var(--background-light);
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+h2 {
+  margin: 0 0 1.5rem 0;
+  font-size: 1.6rem;
+  font-weight: bold;
+  text-align: center;
+  color: var(--primary-color);
+}
+
+p {
+  font-size: 1.05rem;
+  text-align: center;
+  line-height: 1.5;
+  color: var(--text-color);
+  margin-bottom: 1.5rem;
+}
+
+p strong {
+  color: var(--primary-color);
+}
+
+.actions {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+button {
+  min-width: 110px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+button:hover {
+  transform: scale(1.05);
+}
+
+button[color="primary"] {
+  background-color: var(--primary-color);
+  color: #fff;
+}
+
+button[color="primary"]:hover {
+  background-color: var(--primary-hover);
+}
+
+button[color="warn"] {
+  background-color: var(--danger-color);
+  color: #fff;
+}
+
+button[color="warn"]:hover {
+  background-color: #cc1f29;
+}

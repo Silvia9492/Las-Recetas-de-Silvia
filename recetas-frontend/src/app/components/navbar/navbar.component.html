@@ -1,0 +1,22 @@
+<mat-toolbar color="primary" class="navbar-toolbar">
+  <button mat-icon-button>
+    <mat-icon>restaurant_menu</mat-icon>
+  </button>
+  <span class="navbar-title">Las Recetas de Silvia</span>
+
+  <span class="spacer"></span>
+
+  <button mat-button (click)="insertarReceta()">
+    <mat-icon>add</mat-icon>
+    Nueva Receta
+  </button>
+
+  <span class="username">
+    <mat-icon>person</mat-icon>
+    {{ username }}
+  </span>
+
+  <button mat-icon-button matTooltip="Cerrar sesión" (click)="logout()">
+    <mat-icon>logout</mat-icon>
+  </button>
+</mat-toolbar>

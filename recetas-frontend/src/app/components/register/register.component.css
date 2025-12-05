@@ -1,0 +1,117 @@
+.login-container {
+  background: linear-gradient(135deg, #FFB3A7 0%, #FF6F61 50%, #CC1F29 100%);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card {
+  border-radius: 20px;
+  box-shadow: 0 12px 28px rgba(0,0,0,0.25);
+  border: 1px solid rgba(255, 59, 63, 0.3);
+  background-color: #fff;
+  padding: 2.5rem 2rem;
+  max-width: 400px;
+  width: 100%;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+mat-form-field {
+  width: 100%;
+  display: block;
+  margin-bottom: 1.5rem;
+}
+
+mat-form-field .mat-form-field-label {
+  color: var(--primary-color);
+}
+
+.form-control,
+mat-form-field input,
+mat-form-field textarea {
+  border-radius: 10px;
+  padding: 12px;
+  color: var(--dark-color);
+}
+
+.form-control:focus,
+mat-form-field.mat-focused .mat-form-field-outline-thick {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 0.25rem rgba(255,59,63,0.35);
+}
+
+mat-icon,
+.text-primary,
+.fas {
+  color: var(--primary-color);
+}
+
+.btn-lg,
+button.mat-flat-button {
+  border-radius: 10px;
+  font-weight: 600;
+  padding: 12px;
+  width: 100%;
+  text-transform: none;
+  color: #fff;
+  background-color: var(--primary-color);
+}
+
+.btn-lg:hover,
+button.mat-flat-button:hover {
+  background-color: var(--primary-hover);
+}
+
+.d-grid {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.registerLink {
+  margin-left: 0.25rem;
+  color: var(--primary-color);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.alert {
+  border-radius: 10px;
+  padding: 0.75rem 1rem;
+  font-weight: 500;
+}
+
+.alert-danger {
+  background-color: rgba(255,30,30,0.1);
+  border: 1px solid var(--danger-color);
+  color: var(--danger-color);
+}
+
+.alert-success {
+  background-color: rgba(255,107,107,0.1);
+  border: 1px solid var(--secondary-color);
+  color: var(--secondary-color);
+}
+
+mat-progress-spinner {
+  display: block;
+  margin: 1rem auto;
+}
+
+mat-form-field:first-of-type {
+  margin-top: 0.5rem;
+}

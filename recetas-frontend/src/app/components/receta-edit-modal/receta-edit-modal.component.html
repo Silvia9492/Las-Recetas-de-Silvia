@@ -1,0 +1,46 @@
+<h2 class="modal-title">Editar receta</h2>
+
+<div class="modal-content">
+
+  <form #form="ngForm" (ngSubmit)="editarReceta(form)">
+
+    <mat-form-field appearance="outline">
+      <mat-label>Nombre</mat-label>
+      <input matInput name="nombre" [(ngModel)]="receta.nombre" required>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Ingredientes</mat-label>
+      <textarea matInput name="ingredientes" [(ngModel)]="receta.ingredientes" required></textarea>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Descripción</mat-label>
+      <textarea matInput name="descripcion" [(ngModel)]="receta.descripcion" required></textarea>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Tiempo preparación (minutos)</mat-label>
+      <input matInput type="number" name="tiempo" [(ngModel)]="receta.tiempoPreparacion" required>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Dificultad</mat-label>
+      <mat-select [(ngModel)]="receta.dificultadId" name="dificultad" required>
+        <mat-option *ngFor="let d of dificultades" [value]="d.id">{{ d.dificultad }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <div class="actions">
+      <button mat-button (click)="cancelar()">Cancelar</button>
+      <button mat-flat-button color="primary" type="submit" [disabled]="isLoading">
+        Guardar cambios
+      </button>
+    </div>
+
+    <mat-progress-spinner *ngIf="isLoading" diameter="40"></mat-progress-spinner>
+
+    <p class="error" *ngIf="errorMessage">{{ errorMessage }}</p>
+
+  </form>
+</div>

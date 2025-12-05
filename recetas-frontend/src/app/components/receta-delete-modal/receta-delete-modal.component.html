@@ -1,0 +1,8 @@
+<h2>Eliminar receta</h2>
+
+    <p>¿Estás seguro de que quieres eliminar la receta de <strong>"{{ data.receta.nombre }}"</strong>?</p>
+
+    <div class="actions">
+      <button mat-button (click)="cancelar()">Mejor no</button>
+      <button mat-flat-button color="warn" (click)="borrar()">Sí, elimínala</button>
+    </div>
