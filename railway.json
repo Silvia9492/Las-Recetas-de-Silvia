@@ -1,0 +1,9 @@
+{
+  "build": {
+    "builder": "paketobuildpacks/builder-jammy-base",
+    "buildCommand": "cd recetas-backend && mvn clean package -DskipTests"
+  },
+  "deploy": {
+    "startCommand": "java -jar recetas-backend/target/recetas-0.0.1-SNAPSHOT.jar"
+  }
+}
